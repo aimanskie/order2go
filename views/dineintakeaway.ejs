@@ -1,0 +1,20 @@
+<%- include('head.ejs')%>
+
+  <body>
+    <!-- Page Content -->
+    <div class="container" style="width: 300px;text-align:center">
+      <form action="/complete-order/diner" method="post">
+        <div class="form-group">
+          <label for="name">Name</label>
+          <input class="form-control" name="name">
+        </div>
+        <div class="form-group">
+          <label for="price">Table No</label>
+          <input type="number" class="form-control" id="price" name="table">
+        </div>
+        <input type="submit" class="btn btn-primary" name="dineTA" value="Take Away"></input>
+        <input type="submit" class="btn btn-primary" name="dineTA" value="Dine In"></input>
+      </form>
+    </div>
+
+    <%- include('end.ejs')%>

@@ -1,0 +1,52 @@
+<%- include('head.ejs')%>
+
+  <body>
+    <!-- Page Content -->
+    <div class="container" style="text-align: center">
+      <h1>Your details</h1>
+      <h1>Thank you <%= diner %> for your order! You have only <%= Math.floor(Math.random() * 10 + 1) %> in front
+            of you. Thank you for waiting</h1>
+      <h3>Name - <%= diner %>
+      </h3>
+      <h2>
+        <% if (dineTA==='Take Away' ) {%>
+          <%= dineTA %>
+            <%} else {%>
+              <h3>Table No - <%=dinerTable%>
+              </h3>
+              <%}%>
+      </h2>
+      <!-- <div class="row"> -->
+      <table cellpadding="10px" cellspacing="15px" style="margin-left: auto; margin-right: auto">
+        <tr>
+          <th>No</th>
+          <th>Name of item</th>
+          <th>Price</th>
+          <th>Quantity</th>
+        </tr>
+        <% let i=1; for(let o of complete) {%>
+          <tr>
+            <th>
+              <%= i++ %>
+            </th>
+            <th>
+              <%= o.name %>
+            </th>
+            <th>
+              RM<%= o.price %>
+            </th>
+            <th>
+              <%= o.quantity %>
+            </th>
+          </tr>
+          <% } %>
+      </table>
+      <% let sum=0; for(let o of complete){ sum +=(o.price * o.quantity)}%>
+        <h3>Total price is RM <%= sum %>
+        </h3>
+        <a href="#"> Pay here </a>
+    </div>
+    <!-- </div> -->
+    </div>
+
+    <%- include('end.ejs')%>

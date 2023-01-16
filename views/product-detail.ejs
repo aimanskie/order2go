@@ -1,0 +1,30 @@
+<%- include('head.ejs')%>
+
+  <body>
+    <!-- Page Content -->
+    <div class="container">
+      <div class="row">
+        <%- include('sidebar.ejs')%>
+          <div class="col-lg-9">
+            <%- include('carousel.ejs')%>
+              <h1>
+                <%= menu.name %>
+              </h1>
+              <p><img src="<%= menu.image_url%>" /></p>
+              <p>Price:
+                <%= menu.price%>
+              </p>
+              <p>Description:
+                <%= menu.description%>
+              </p>
+              <div class="row">
+                <div class="card-footer">
+                  <a class="btn btn-primary" href="/add-to-cart/<%= menu.id %> " role="button">Add to cart</a>
+                </div>
+
+              </div>
+          </div>
+      </div>
+    </div>
+
+    <%- include('end.ejs')%>

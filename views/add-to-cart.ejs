@@ -1,0 +1,62 @@
+<%- include('head.ejs')%>
+
+  <body>
+    <!-- Page Content -->
+    <div class="container">
+      <div class="row">
+        <%- include('sidebar.ejs')%>
+          <div class="col-lg-9">
+            <%- include('carousel.ejs')%>
+              <div class="row">
+                <div class="card-body">
+                  <table cellpadding="10px" cellspacing="15px">
+                    <tr>
+                      <th>No</th>
+                      <th>Name of item</th>
+                      <th>Price</th>
+                      <th>Quantity</th>
+                    </tr>
+                    <% let i=1; for(let o of order) {%>
+                      <tr>
+                        <th>
+                          <%= i++ %>
+                        </th>
+                        <th>
+                          <%= o.name %>
+                        </th>
+                        <th>
+                          RM<%= o.price %>
+                        </th>
+                        <th>
+                          <%= o.quantity %>
+                        </th>
+                        <th>
+                          <form action="/remove-cart/<%= o.name %>" method="post">
+                            <input type="hidden" name="_method" value="delete">
+                            <button class="btn btn-primary">remove</button>
+                          </form>
+                        </th>
+                      </tr>
+                      <% } %>
+                  </table>
+                  <% let sum=0; for(let o of order){ sum +=(o.price * o.quantity)}%>
+                    <h3>Total price is RM <%= sum %>
+                    </h3>
+                    <div>
+                      <form action="/dinein-takeaway" method="get">
+                        <button type="submit" class="btn btn-primary">complete order</button>
+                      </form>
+                      <span>
+                        <form action="/" method="get">
+                          <button type="submit" class="btn btn-primary">continue order</button>
+                        </form>
+                      </span>
+                    </div>
+                </div>
+
+              </div>
+          </div>
+      </div>
+    </div>
+
+    <%- include('end.ejs')%>

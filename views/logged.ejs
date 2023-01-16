@@ -1,0 +1,12 @@
+<header>
+  <% if (isLoggedIn) { %>
+    logged in as <%= currentUser.email %>
+
+      <form action="/logout" method="post">
+        <input type="hidden" name="_method" value="delete">
+        <button>logout</button>
+      </form>
+      <% } else { %>
+        <a href="/login">login</a>
+        <% } %>
+</header>

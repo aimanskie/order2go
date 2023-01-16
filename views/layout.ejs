@@ -1,0 +1,41 @@
+<%- include('head.ejs')%>
+
+  <body>
+    <!-- Page Content -->
+    <div class="container">
+      <div class="row">
+        <%- include('sidebar.ejs')%>
+        <div class="col-lg-9">
+            <h1>ORDER 2 GO</h1>
+            <%- include('carousel.ejs')%>
+              <div class="row">
+
+                <% for(let m of menu) {%>
+                  <div class="col-lg-4 col-md-6 mb-4">
+                    <div class="card h-100">
+                      <a href="#"><img class="card-img-top" src="<%= m.image_url%>" alt=""></a>
+                      <div class="card-body">
+                        <h4 class="card-title">
+                          <a href="#">
+                            <%= m.name%>
+                          </a>
+                        </h4>
+                        <h5>RM
+                          <%= m.price%>
+                        </h5>
+                        <%= m.description%>
+                      </div>
+                      <div class="card-footer">
+                        <a class="btn btn-primary" href="/products/<%=m.id%>" role="button">View Details</a>
+                        <a class="btn btn-primary" href="/add-to-cart/<%=m.id%>" role="button">Add to cart</a>
+                      </div>
+                    </div>
+                  </div>
+                  <% } %>
+
+              </div>
+          </div>
+      </div>
+    </div>
+
+    <%- include('end.ejs')%>

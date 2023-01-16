@@ -1,0 +1,64 @@
+<%- include('head.ejs')%>
+
+  <body>
+    <div class="container">
+      <div class="row">
+        <%- include('sidebar.ejs')%>
+          <div class="col-lg-9">
+            <h1>WELCOME TO STAFF DASHBOARD</h1>
+            <h2>Add Menu</h2>
+            <form action="/staff/add-menu" method="post">
+              <div class="form-group">
+                <label for="name">Title</label>
+                <input class="form-control" name="name">
+              </div>
+              <div class="form-group">
+                <label for="price">Price</label>
+                <input type="number" class="form-control" id="price" name="price">
+              </div>
+              <div class="form-group">
+                <label for="image_url">Image URL</label>
+                <input class="form-control" id="image_url" name="image_url">
+              </div>
+              <div class="form-group">
+                <label for="description">Description</label>
+                <textarea class="form-control" name="description" id="description"></textarea>
+              </div>
+              <button type="submit" class="btn btn-primary">Submit</button>
+            </form>
+            <h2>List of Menu Items</h2>
+            <div class="row">
+              <% for(let m of menu) {%>
+                <div class="col-lg-4 col-md-6 mb-4">
+                  <div class="card h-100">
+                    <a href="#"><img class="card-img-top" src="<%= m.image_url%>" alt=""></a>
+                    <div class="card-body">
+                      <h4 class="card-title">
+                        <a href="#">
+                          <%= m.name%>
+                        </a>
+                      </h4>
+                      <h5>RM
+                        <%= m.price%>
+                      </h5>
+                      <%= m.description%>
+                    </div>
+                    <div class="card-footer">
+                      <a class="btn btn-primary" href="/edit-product/<%=m.id%>" role="button">Update Menu</a>
+
+                      <form action="/delete-product/<%=m.id%>" method="post">
+                        <input type="hidden" name="_method" value="delete">
+                        <button>delete</button>
+                      </form>
+                    </div>
+                  </div>
+                </div>
+                <% } %>
+
+            </div>
+          </div>
+      </div>
+    </div>
+
+
+    <%- include('end.ejs')%>

@@ -1,0 +1,30 @@
+<%- include('head.ejs')%>
+
+  <body>
+    <div class="container">
+      <div class="row">
+        <%- include('sidebar.ejs')%>
+          <div class="col-lg-9">
+            <%- include('carousel.ejs')%>
+            <h1>login</h1>
+              <div class="row">
+
+                <form action="/login" method="post">
+                  <p>
+                    <label for="">email</label>
+                    <input type="text" name="email">
+                  </p>
+                  <p>
+                    <label for="">password</label>
+                    <input type="password" name="password">
+                    <button>login</button>
+                  </p>
+                </form>
+
+              </div>
+          </div>
+      </div>
+    </div>
+
+
+    <%- include('end.ejs')%>
